@@ -123,7 +123,7 @@ const Home = () => {
     const handleClickRowEdit = (row: Drug) => {
         Object.freeze(row);
         editableItem = { ...row };;
-        //setRow(row as Drug);
+        setRow(row as Drug);
         handleOpenrugViewEdit();
     };
     const handleCartClick = () => {

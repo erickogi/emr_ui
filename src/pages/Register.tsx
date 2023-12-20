@@ -56,6 +56,15 @@ const Register = () => {
     const handleRegister = async () => {
         // This is only a basic validation of inputs. Improve this as needed.
         if (firstName && lastName && mobileNumber && email && password && role) {
+            if(!mobileNumber.startsWith("+254")){
+                dispatch(
+                    showNotification({
+                      message: "Please fill the mobile number in the format +2547********",
+                      type: NotificationType.Error,
+                    })
+                  );
+                return;
+            }
             try {
                 await dispatch(
                     register({
@@ -145,7 +154,7 @@ const Register = () => {
                                     required
                                     fullWidth
                                     id="mobileNumber"
-                                    label="Mobile Number"
+                                    label="Mobile Number (+2547********)"
                                     autoFocus
                                     value={mobileNumber}
                                     onChange={(e) => setMobileNumber(e.target.value)}
